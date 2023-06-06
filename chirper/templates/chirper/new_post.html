@@ -1,0 +1,11 @@
+{% extends 'chirper/base.html' %}
+
+{% block content %}
+
+<form action="{% url 'chirper:new_post' %}" method='post'>
+    {% csrf_token %}
+    {{form.as_div}}
+    <button type="submit">Send chirp</button>
+</form>
+
+{% endblock content %}

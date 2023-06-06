@@ -1,1 +1,17 @@
-<p>Chirper.</p>
+{% extends 'chirper/base.html' %}
+
+{% block content %}
+<p>Welcome to Chirper.</p>
+
+
+<a href="{% url 'chirper:new_post' %}">Make a new Chirp</a>
+
+<h3>Chirps:</h3>
+    {% for post in posts %}
+            <p>{{post.text}}</p>
+    {% empty %} No one has chirped yet.
+
+    {% endfor %}
+
+
+{% endblock content %}
