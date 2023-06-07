@@ -9,5 +9,11 @@
     <button type="submit">Save changes</button>
 </form>
 
+<form action="{% url 'chirper:delete_post' post.id %}" method='post'>
+    {% csrf_token %}
+    <button type="submit">Delete chirp</button>
+</form>
+
+
 {% endblock content %}
 

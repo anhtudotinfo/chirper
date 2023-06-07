@@ -1,0 +1,11 @@
+{% extends 'chirper/base.html' %}
+
+{% block content %}
+
+    <form action="{% url 'accounts:login' %}" method='post'>
+        {% csrf_token %}
+        {{form.as_div}}
+        <button type="submit">Log in</button>
+    </form>
+
+{% endblock content %}

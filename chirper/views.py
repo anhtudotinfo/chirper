@@ -33,4 +33,12 @@ def edit_post(request, post_id):
             return redirect('chirper:index')
     context = {'post': post, 'form':form}
     return render(request, 'chirper/edit_post.html', context)
-        
+
+def delete_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    context = {'post' : post}
+    if request.method != 'POST':
+        return render(request, 'chirper/edit_post.html', context)
+    else: 
+        post.delete()   
+        return redirect('chirper:index')
