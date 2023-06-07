@@ -8,7 +8,9 @@
 
 <h3>Chirps:</h3>
     {% for post in posts %}
-            <p>{{post.text}}</p>
+            <p>{{post.text}}
+                <a href="{% url 'chirper:edit_post' post.id %}">Edit chirp</a>
+            </p>
     {% empty %} No one has chirped yet.
 
     {% endfor %}

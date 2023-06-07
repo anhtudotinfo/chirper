@@ -20,4 +20,17 @@ def new_post(request):
     context = {'form': form}
     return render(request, 'chirper/new_post.html', context)
 
-                
+
+def edit_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    
+    if request.method != 'POST':
+        form = PostForm(instance=post)
+    else:
+        form = PostForm(instance=post, data=request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect('chirper:index')
+    context = {'post': post, 'form':form}
+    return render(request, 'chirper/edit_post.html', context)
+        
