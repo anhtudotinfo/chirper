@@ -9,7 +9,9 @@
 <h3>Chirps:</h3>
     {% for post in posts %}
             <p>{{post.id}}. {{post.text}}
+                {% if post.poster == request.user %}
                 <a href="{% url 'chirper:edit_post' post.id %}">Edit chirp</a>
+                {% endif %}
             </p>
     {% empty %} No one has chirped yet.
 
