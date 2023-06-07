@@ -11,7 +11,6 @@ def index(request):
     context = {"posts": posts}
     return render(request, 'chirper/index.html',  context)
 
-
 @login_required
 def new_post(request):
     if request.method != 'POST':
@@ -57,3 +56,8 @@ def delete_post(request, post_id):
             return redirect('chirper:index')
     else:
         raise Http404
+    
+def profile(request, poster):
+    posts = Post.objects.filter(poster__username=poster)
+    context = {'posts': posts, 'poster': poster }
+    return render(request, 'chirper/profile.html', context)
