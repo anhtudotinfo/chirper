@@ -10,10 +10,11 @@
     {% bootstrap_javascript%}
 </head>
 <body>
+<div class='container'>
     <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary" style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <a class="navbar-brand mb-0 h1" href="{% url 'chirper:index' %}">Chirper</a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav mb-2 mb-lg-0">
                 <!--highlighting the active url page based on its name as they stand in urls.py-->
                 {% with request.resolver_match.url_name as url_name %}
                     <li class='nav-item'>
@@ -35,8 +36,9 @@
                 {% endwith %}
             </ul>
         </div>
-      </nav>
-      
+    </nav>
+</div>
+
 {% block content %}
 {% endblock content %}
 
