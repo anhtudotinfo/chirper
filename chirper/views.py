@@ -7,7 +7,8 @@ from django.http import Http404
 # Create your views here.
 
 def index(request):
-    posts = Post.objects.order_by("date_added")
+    # display the most recent posts first
+    posts = Post.objects.order_by("-date_added")
     context = {"posts": posts}
     return render(request, 'chirper/index.html',  context)
 
@@ -58,6 +59,6 @@ def delete_post(request, post_id):
         raise Http404
     
 def profile(request, poster):
-    posts = Post.objects.filter(poster__username=poster)
+    posts = Post.objects.filter(poster__username=poster).order_by('-date_added')
     context = {'posts': posts, 'poster': poster }
     return render(request, 'chirper/profile.html', context)

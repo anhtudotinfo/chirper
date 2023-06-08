@@ -1,16 +1,16 @@
 {% extends 'chirper/base.html' %}
+{% block title %}<title>Chirper | {{poster}} </title>{% endblock title %}
 
 {% block content %}
 <p>{{poster}}'s Profile</p>
 <p>Here is what {{poster}} has been chirping about:</p>
 {% for post in posts %}
-    <p>{{post}}
-    {% if post.poster == request.user %}
+    <p>{{post}} - {{post.date_added|date:'M d y, H:i'}}
+    {% if post.poster == request.user %} |
     <a href="{% url 'chirper:edit_post' post.id %}">Edit chirp</a>
     {% endif %}
 </p>
 {% endfor %}
-
 
 {% endblock content %}
 

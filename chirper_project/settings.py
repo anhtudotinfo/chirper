@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'chirper',
     'accounts',
     
+    #other
+    'django_bootstrap5',  
+    
     #default apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -111,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'CET'
 
 USE_I18N = True
 
@@ -130,3 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'chirper:index'
 LOGOUT_REDIRECT_URL = 'chirper:index'
+LOGIN_URL = 'chirper:login'
